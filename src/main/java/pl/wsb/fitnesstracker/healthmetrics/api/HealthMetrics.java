@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "health_metrics")
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString
 public class HealthMetrics {
 
@@ -20,8 +20,9 @@ public class HealthMetrics {
     @Nullable
     private Long id;
 
-    @Column(name = "user_id", nullable = false)
-    private Long userId;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false, unique = true)
+    private User user;
 
     @Column(name = "date", nullable = false)
     private LocalDate date;
@@ -32,17 +33,16 @@ public class HealthMetrics {
     @Column(name = "height", nullable = false)
     private Float height;
 
-    @Column(name = "heartRate", nullable = false)
+    @Column(name = "heart_rate", nullable = false)
     private Integer heartRate;
 
     public HealthMetrics(
-            final Long userId,
+            final User user,
             final LocalDate date,
             final Float weight,
             final Float height,
-            final Integer heartRate
-    ) {
-        this.userId = userId;
+            final Integer heartRate) {
+        this.user = user;
         this.date = date;
         this.weight = weight;
         this.height = height;
