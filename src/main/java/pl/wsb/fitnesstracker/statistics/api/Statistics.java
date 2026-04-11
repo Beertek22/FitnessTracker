@@ -1,5 +1,5 @@
 package pl.wsb.fitnesstracker.statistics.api;
-
+import pl.wsb.fitnesstracker.user.api.User;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -11,7 +11,7 @@ import lombok.ToString;
 @Table(name = "statistics")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@ToString
+@ToString(exclude = "user")
 public class Statistics {
 
     @Id

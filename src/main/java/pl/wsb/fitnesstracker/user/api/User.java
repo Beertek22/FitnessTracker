@@ -1,4 +1,6 @@
 package pl.wsb.fitnesstracker.user.api;
+import pl.wsb.fitnesstracker.statistics.api.Statistics;
+import pl.wsb.fitnesstracker.healthmetrics.api.HealthMetrics;
 
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;

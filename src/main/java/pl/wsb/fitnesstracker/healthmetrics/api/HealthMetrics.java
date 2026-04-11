@@ -1,10 +1,11 @@
 package pl.wsb.fitnesstracker.healthmetrics.api;
-
+import pl.wsb.fitnesstracker.user.api.User;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import lombok.AccessLevel;
 
 import java.time.LocalDate;
 
@@ -12,7 +13,7 @@ import java.time.LocalDate;
 @Table(name = "health_metrics")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@ToString
+@ToString(exclude = "user")
 public class HealthMetrics {
 
     @Id
