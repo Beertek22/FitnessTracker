@@ -1,8 +1,11 @@
 package pl.wsb.fitnesstracker.user.internal;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import pl.wsb.fitnesstracker.user.api.User;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -19,5 +22,20 @@ interface UserRepository extends JpaRepository<User, Long> {
                 .filter(user -> Objects.equals(user.getEmail(), email))
                 .findFirst();
     }
+
+    @Query("""
+        SELECT u
+        FROM User u
+        WHERE u.email LIKE CONCAT('%', :domain)
+    """)
+    List<User> findByEmailDomainJPQL(@Param("domain") String domain);
+
+
+    @Query(value = """
+        SELECT *
+        FROM users
+        WHERE email LIKE CONCAT('%', :domain)
+    """, nativeQuery = true)
+    List<User> findByEmailDomainNative(@Param("domain") String domain);
 
 }

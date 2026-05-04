@@ -9,8 +9,6 @@ import lombok.ToString;
 import pl.wsb.fitnesstracker.user.api.User;
 import pl.wsb.fitnesstracker.event.Event;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Table(name = "User_Event")
 @Getter
@@ -33,5 +31,12 @@ public class UserEvent {
 
     private String status;
 
-
+    public UserEvent(
+            final User user,
+            final Event event,
+            final String status) {
+        this.user = user;
+        this.event = event;
+        this.status = status;
+    }
 }
