@@ -26,11 +26,22 @@ public class WorkoutSession {
     @JoinColumn(name = "training_id", nullable = false)
     private Training training;
 
+    @Column(name = "timestamp", nullable = false)
     private LocalDateTime timestamp;
+
+    @Column(name = "startLatitude", nullable = false)
     private double startLatitude;
+
+    @Column(name = "startLongitude", nullable = false)
     private double startLongitude;
+
+    @Column(name = "endLatitude", nullable = false)
     private double endLatitude;
+
+    @Column(name = "endLongtide", nullable = false)
     private double endLongitude;
+
+    @Column(name = "attitude", nullable = false)
     private double altitude;
 
     public WorkoutSession(

@@ -20,11 +20,22 @@ public class Event {
     @Nullable
     private Long id;
 
+    @Column(name = "name", nullable = false)
     private String name;
+
+    @Column(name = "description", nullable = false)
     private String description;
+
+    @Column(name = "startTime", nullable = false)
     private double startTime;
+
+    @Column(name = "endTime", nullable = false)
     private double endTime;
+
+    @Column(name = "country", nullable = false)
     private String country;
+
+    @Column(name = "city", nullable = false)
     private String city;
 
     public Event(

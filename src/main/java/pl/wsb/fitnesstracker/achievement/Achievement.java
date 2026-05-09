@@ -23,7 +23,10 @@ public class Achievement {
     @Nullable
     private Long id;
 
+    @Column(name = "name", nullable = false)
     private String name;
+
+    @Column(name = "earnedAt", nullable = false)
     private LocalDateTime earnedAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
