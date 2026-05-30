@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import pl.wsb.fitnesstracker.user.api.User;
+import pl.wsb.fitnesstracker.user.api.UserNotFoundException;
 import pl.wsb.fitnesstracker.user.api.UserProvider;
 import pl.wsb.fitnesstracker.user.api.UserService;
 
@@ -34,6 +35,19 @@ class UserServiceImpl implements UserService, UserProvider {
     @Override
     public Optional<User> getUserByEmail(final String email) {
         return userRepository.findByEmail(email);
+    }
+
+    @Override
+    public void deleteUserById(Long id) {
+        userRepository.deleteById(id);
+    }
+
+    @Override
+    public User updateUser(Long id, User userData) {
+        User foundUser = userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException(id));
+        foundUser.updateData(userData);
+        return userRepository.save(foundUser);
     }
 
     @Override

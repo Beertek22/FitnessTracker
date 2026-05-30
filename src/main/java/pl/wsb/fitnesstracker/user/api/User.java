@@ -51,6 +51,13 @@ public class User {
         this.birthdate = birthdate;
         this.email = email;
     }
+
+    public void updateData(User anotherUser) {
+        this.firstName = anotherUser.getFirstName();
+        this.lastName = anotherUser.getLastName();
+        this.birthdate = anotherUser.getBirthdate();
+        this.email = anotherUser.getEmail();
+    }
 }
 
 

@@ -1,5 +1,7 @@
 package pl.wsb.fitnesstracker.user.api;
 
+import org.springframework.transaction.annotation.Transactional;
+
 /**
  * Interface (API) for modifying operations on {@link User} entities through the API.
  * Implementing classes are responsible for executing changes within a database transaction, whether by continuing an existing transaction or creating a new one if required.
@@ -13,5 +15,10 @@ public interface UserService {
      * @return The created user
      */
     User createUser(User user);
+
+    @Transactional
+    User updateUser(Long id, User userData);
+
+    void deleteUserById(Long id);
 
 }
